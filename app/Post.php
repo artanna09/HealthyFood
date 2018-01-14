@@ -16,4 +16,10 @@ class Post extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
+    public function method(){
+        return $this->belongsTo('App\Methods');
+    }
+    public function consist(){
+        return $this->belongsTo('App\Consists');
+    }
 }
