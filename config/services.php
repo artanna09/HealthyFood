@@ -34,5 +34,9 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
+    'facebook' => [
+        'client_id' => '310795789441815',
+        'client_secret' => '80e8fe5834a5d7b022624a726f89127a',
+        'redirect' => 'http://healthyfood/callback',
+    ],
 ];

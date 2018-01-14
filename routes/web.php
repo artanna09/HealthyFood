@@ -30,3 +30,6 @@ Route::get('/consists', 'ConsistsController@index');
 Route::get('/consists/{id}', 'ConsistsController@find');
 Route::get('/methods', 'MethodsController@index');
 Route::get('/methods/{id}', 'MethodsController@find');
+
+Route::get('/redirect', 'SocialAuthFacebookController@redirect');
+Route::get('/callback', 'SocialAuthFacebookController@callback');
