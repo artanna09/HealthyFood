@@ -14,6 +14,12 @@
      <div class="form-group">
         {{Form::File('cover_image')}}
      </div>
+    <div class="form-group">
+            {{ Form::select('consists', $data['consists']) }} 
+    </div>
+    <div class="form-group">
+            {{ Form::select('methods', $data['methods']) }}
+    </div>
      {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 {!! Form::close() !!}
 

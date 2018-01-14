@@ -18,7 +18,9 @@ class CreatePostsTable extends Migration
             $table->string('title'); 
             $table->mediumText('body');
             $table->integer('method_id');
+            $table->foreign('method_id')->references('id')->on('methods');
             $table->integer('consist_id');
+            $table->foreign('consist_id')->references('id')->on('consists');
             $table->timestamps();
             
         });

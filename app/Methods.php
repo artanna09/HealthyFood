@@ -11,4 +11,7 @@ class Methods extends Model
     //Primary Key
     public $primaryKey = 'id';
 
+    public function posts(){
+        return $this->hasMany('App\Post');
+    }
 }

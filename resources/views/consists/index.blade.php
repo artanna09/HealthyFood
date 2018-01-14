@@ -5,7 +5,7 @@
     @if(count($consists)>0)
         @foreach($consists as $consist)
             <div class="well">
-                <h3> <a href="/posts/{{$consist->id}}">{{$consist->consist}}</a></h3>
+                <h3> <a href="/consists/{{$consist->id}}">{{$consist->consist}}</a></h3>
             </div>
         @endforeach
         {{$consists->links()}}

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
+use App\Methods;
+use App\Consists;
 use DB;
 
 class PostsController extends Controller
@@ -33,10 +35,8 @@ class PostsController extends Controller
         //$posts = Post::orderBy('title', 'desc')->take(1)->get();
        // $posts = Post::orderBy('title', 'desc')->get();
 
-       $posts = Post::orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         return view ('posts.index')->with ('posts', $posts);
-
-        
     }
 
     /**
@@ -46,7 +46,10 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $data['methods'] = Methods::orderBy('method', 'asc')->pluck('method', 'id');
+        $data['consists'] = Consists::orderBy('consist', 'asc')->pluck('consist', 'id');
+        return view('posts.create')->with('data',$data);
+        
     }
 
     /**
@@ -60,7 +63,9 @@ class PostsController extends Controller
         $this->validate ($request , [
             'title' => 'required',
             'body' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999',
+            'consists' => 'required',
+            'methods' => 'required'
         ]);
 
         //Handle file upload
@@ -85,6 +90,9 @@ class PostsController extends Controller
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
         $post->cover_image = $fileNameToStore;
+        $post->method_id = $request->input('methods');
+        //$post->method()->associate(Methods::find($request->input('methods')));
+        $post->consist_id =  $request->input('consists');
         $post->save();
 
         return redirect ('/posts')->with('success', 'Post Created');

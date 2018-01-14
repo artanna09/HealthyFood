@@ -9,7 +9,7 @@ use App\Methods;
 class PagesController extends Controller
 {
     public function index(){
-        $title = 'Welcome to Laravel!';
+        $title = 'Welcome to Healthy Cooking!';
         return view ('pages.index', compact ('title'));
     }
 
@@ -17,9 +17,9 @@ class PagesController extends Controller
         $title = 'About Us';
         return view ('pages.about', compact ('title'));
     }
+    
     public function consists(){
-        $consists = Consists::paginate(10);
-        return view ('consists.index')->with ('consists', $consists);    
+        return redirect('/consists');
     }
 
     public function methods(){

@@ -23,10 +23,10 @@ Route::get('/users/{name}/{id}', function ($name, $id) {
 Route::get('/', 'PagesController@index' );
 Route::get('/consists', 'PagesController@consists' );
 Route::get('/methods', 'PagesController@methods' );
-
 Route::resource('posts','PostsController');
-
-
 Auth::routes();
-
 Route::get('/dashboard', 'DashboardController@index');
+Route::get('/consists', 'ConsistsController@index');
+Route::get('/consists/{id}', 'ConsistsController@find');
+Route::get('/methods', 'MethodsController@index');
+Route::get('/methods/{id}', 'MethodsController@find');
