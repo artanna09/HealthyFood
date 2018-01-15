@@ -9,7 +9,7 @@ use App\Methods;
 class PagesController extends Controller
 {
     public function index(){
-        $title = 'Welcome to Healthy Cooking!';
+        $title = 'Welcome to Healthy Food!';
         return view ('pages.index', compact ('title'));
     }
 
